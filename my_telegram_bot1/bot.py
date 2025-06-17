@@ -1,6 +1,9 @@
 from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, MessageHandler, filters
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     print("START")
     keyboard = [
@@ -61,8 +64,8 @@ async def makesticker(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def google_drive(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["WorkInGoogleDrive"] = True
 if __name__ == "__main__":
-    app = ApplicationBuilder().token("7230904619:AAEB2p-aCHVTOtyY0mu86YmTXanNpU0lSF4").build()
-
+    token = os.getenv("BOT_TOKEN")
+    app = ApplicationBuilder().token(token).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help))
 
