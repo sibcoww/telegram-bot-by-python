@@ -6,5 +6,7 @@ venv/
 __pycache__/
 *.pyc
 .env
+my_telegram_bot1/credentials.json
+my_telegram_bot1/token.json
 # IDE-файлы
 .vscode/
